@@ -1,0 +1,45 @@
+<div class="product-list-container">
+  <!-- Mensaje de Carga -->
+  <div *ngIf="isLoading">Cargando productos...</div>
+
+  <!-- Mensaje de Error -->
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Campo de Búsqueda -->
+  <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" (input)="filterProducts()" placeholder="Search..." class="search-input">
+      <button class="btn btn-add" (click)="goToAddProductForm()">Agregar</button>
+  </div>
+
+  <!-- Tabla de Productos -->
+  <table>
+      <thead>
+          <tr>
+              <th>Logo</th>
+              <th>Nombre del producto</th>
+              <th>Descripción</th>
+              <th>Fecha de liberación</th>
+              <th>Fecha de reestructuración</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of filteredProducts">
+              <td><img src="{{ product.logo }}" alt="Logo" class="product-logo"></td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.date_release | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ product.date_revision | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <!-- Selector de cantidad de registros -->
+  <div class="pagination-controls">
+      <span>{{ filteredProducts.length }} Resultados</span>
+      <select [(ngModel)]="pageSize" (change)="filterProducts()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+      </select>
+  </div>
+</div>

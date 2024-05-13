@@ -1,0 +1,78 @@
+/* Estilos generales para la página */
+.product-list-container {
+  font-family: 'Arial', sans-serif;
+  margin: 20px auto; 
+  max-width: 90%; 
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Estilizando el campo de búsqueda */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  align-items: center;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-add {
+  padding: 8px 16px;
+  background-color: #faf02c;
+  color: #0a268a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+/* Estilos para las imágenes del logo */
+.product-logo {
+  width: 50px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Selector de cantidad de registros y conteo de resultados */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ccc;
+}
+
+.pagination-controls select {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.pagination-controls span {
+  font-size: 16px;
+}

@@ -1,0 +1,67 @@
+<div class="container">
+    <h2>Editar Producto</h2>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-grid">
+        <!-- Campo ID (Deshabilitado) -->
+        <div class="form-group">
+          <label for="id">ID:</label>
+          <input type="text" id="id" [(ngModel)]="product.id" name="id" required minlength="3" maxlength="10" #id="ngModel" class="form-control" disabled>
+        </div>
+  
+        <!-- Campo Nombre -->
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" [(ngModel)]="product.name" name="name" required minlength="5" maxlength="100" #name="ngModel" class="form-control">
+          <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name.errors['required']">Nombre es requerido.</div>
+            <div *ngIf="name.errors['minlength'] || name.errors['maxlength']">Nombre debe tener entre 5 y 100 caracteres.</div>
+          </div>
+        </div>
+        
+        <!-- Campo Descripción -->
+        <div class="form-group">
+          <label for="description">Descripción:</label>
+          <textarea id="description" [(ngModel)]="product.description" name="description" required minlength="10" maxlength="200" #description="ngModel" class="form-control"></textarea>
+          <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+            <div *ngIf="description.errors['required']">Descripción es requerida.</div>
+            <div *ngIf="description.errors['minlength'] || description.errors['maxlength']">Descripción debe tener entre 10 y 200 caracteres.</div>
+          </div>
+        </div>
+        
+        <!-- Campo Logo -->
+        <div class="form-group">
+          <label for="logo">Logo:</label>
+          <input type="text" id="logo" [(ngModel)]="product.logo" name="logo" required #logo="ngModel" class="form-control">
+          <div *ngIf="logo.errors && (logo.dirty || logo.touched)" class="alert alert-danger">
+            <div *ngIf="logo.errors['required']">Logo es requerido.</div>
+          </div>
+        </div>
+        
+        <!-- Campo Fecha de Liberación -->
+        <div class="form-group">
+          <label for="date_release">Fecha de Liberación:</label>
+          <input type="date" id="date_release" [(ngModel)]="product.date_release" name="date_release" required #date_release="ngModel" class="form-control">
+          <div *ngIf="date_release.errors && (date_release.dirty || date_release.touched)" class="alert alert-danger">
+            <div *ngIf="date_release.errors['required']">Fecha de liberación es requerida.</div>
+          </div>
+        </div>
+        
+        <!-- Campo Fecha de Revisión -->
+        <div class="form-group">
+          <label for="date_revision">Fecha de Revisión:</label>
+          <input type="date" id="date_revision" [(ngModel)]="product.date_revision" name="date_revision" required #date_revision="ngModel" class="form-control">
+          <div *ngIf="date_revision.errors && (date_revision.dirty || date_revision.touched)" class="alert alert-danger">
+            <div *ngIf="date_revision.errors['required']">Fecha de revisión es requerida.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botones -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm(productForm)">Reiniciar</button>
+        <button type="button" class="btn btn-back" (click)="goBack()">Volver</button>
+      </div>
+    </form>
+  </div>
+  

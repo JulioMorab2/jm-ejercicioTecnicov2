@@ -50,7 +50,9 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = tempProducts.slice(0, this.pageSize);  // Se aplica pageSize
   }
   
-
+  goToEditProductForm(productId: string) {
+    this.router.navigate(['/edit-product', productId]);
+  }
   
 }
 

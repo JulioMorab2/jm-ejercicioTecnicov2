@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
   pageSize: number = 10; // número por defecto para la paginación
 
 
-  constructor(private productService: ProductService, private router: Router) { } // Inyecta el servicio de productos
+  constructor( private router: Router, private productService: ProductService) { } // Inyecta el servicio de productos
     
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
@@ -35,6 +35,11 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  goToAddProductForm() {
+    console.log('Navegando a add-product');
+    this.router.navigate(['/add-product']);
+  }
+
   filterProducts(): void {
     // Filtra los productos basado en el término de búsqueda y luego aplica el tamaño de página
     let tempProducts = this.searchTerm ? this.products.filter(product =>
@@ -45,10 +50,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = tempProducts.slice(0, this.pageSize);  // Se aplica pageSize
   }
   
-  goToAddProductForm() {
-    console.log('Navegando a add-product');
-    this.router.navigate(['/add-product']);
-  }
+
   
 }
 
